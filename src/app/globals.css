@@ -1,4 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background: #424c63;
     color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 100%;
+    padding: 0 25%;
 }

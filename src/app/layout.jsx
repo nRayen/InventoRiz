@@ -1,4 +1,5 @@
 import "./globals.css";
+import { ThemeProvider } from "@/hooks/useTheme";
 
 export const metadata = {
   title: "InventoRiz",
@@ -6,11 +7,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="fr">
       <body>
+        <ThemeProvider>
           {children}
+        </ThemeProvider>
       </body>
-    </html> 
+    </html>
   );
 }
