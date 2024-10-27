@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/utils/products";
+import { prisma } from "@/app/libs/products";
 
 
 // API pour supprimer
@@ -14,7 +14,7 @@ export async function DELETE(request) {
         })
 
     } catch (error) {
-        console.error(error.message)
+        console.error(error)
     }
     return NextResponse.json({
         product
@@ -26,12 +26,9 @@ export async function POST(request) {
     const product = await request.json()
 
     try {
-        const deleteProduct = await prisma.product.delete({
-            where : {
-                id : product.id
-            },
+        await prisma.product.create({
+            data : product
         })
-
     } catch (error) {
         console.error(error.message)
     }
@@ -42,18 +39,24 @@ export async function POST(request) {
 
 
 // API pour modifier
-export async function PATCH(request) {
+export async function PUT(request) {
     const product = await request.json()
 
     try {
-        const deleteProduct = await prisma.product.delete({
+        await prisma.product.update({
             where : {
                 id : product.id
             },
+            data : {
+                name : product.name,
+                description : product.description,
+                quantity : product.quantity,
+                price : product.price
+            }
         })
 
     } catch (error) {
-        console.error(error.message)
+        console.error(error)
     }
     return NextResponse.json({
         product
