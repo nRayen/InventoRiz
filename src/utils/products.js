@@ -11,13 +11,30 @@ export async function addProductToBDD(req,res) {
     console.log('add')
 }
 
-export async function deleteProductFromBDD(id) {
-    const deleteProduct = await prisma.product.delete({
-        where : {
-            id : id
-        },
-    })
+// export async function deleteProductFromBDD(id) {
+
+// }
+export const deleteProductFromBDD = async (item) => {
+    console.log('test')
+    try {
+        const response = await fetch("/api/products", {
+            // headers: {
+            //     Accept: "application/json",
+            //     method: "DELETE"
+            // },
+            method: "DELETE",
+            body: JSON.stringify(item)
+        })
+
+        if (response) {
+            const data = await response.json()
+            console.log(data)
+        }
+    } catch (error) {
+        console.log(error)
+    }
 }
+
 
 export async function updateProductInBDD(req,res) {
     console.log('update')

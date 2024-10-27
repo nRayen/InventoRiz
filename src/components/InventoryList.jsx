@@ -6,9 +6,9 @@ import React from 'react'
 const InventoryList = () => {
     const {inventory, addToInventory,removeFromInventory, setAddMenu, setUpdateMenu} = useInventory();
 
-  const handleDelete = (id) => {
-    removeFromInventory(id);
-    deleteProductFromBDD(id)
+  const handleDelete = async (product) => {
+    removeFromInventory(product.id);
+    await deleteProductFromBDD(product)
   }
 
   const handleUpdate = (item) => {
@@ -43,7 +43,7 @@ const InventoryList = () => {
                 <td>{item.price}</td>
                 <td>
                   <button onClick={() => {handleUpdate(item)}}>Modifier</button>
-                  <button onClick={() => handleDelete(item.id)}>Supprimer</button>
+                  <button onClick={() => handleDelete(item)}>Supprimer</button>
                 </td>
               </tr>
             )
