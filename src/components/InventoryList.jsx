@@ -1,14 +1,25 @@
 "use client"
 import { useInventory } from '@/hooks/useInventory'
+import { deleteProductFromBDD } from '@/utils/products';
 import React from 'react'
 
 const InventoryList = () => {
-    const {inventory, addToInventory,removeFromInventory} = useInventory();
+    const {inventory, addToInventory,removeFromInventory, setAddMenu, setUpdateMenu} = useInventory();
 
   const handleDelete = (id) => {
     removeFromInventory(id);
+    deleteProductFromBDD(id)
   }
 
+  const handleUpdate = (item) => {
+    setUpdateMenu({open: true, item: item})
+    setAddMenu(false)
+  }
+
+  const handleAdd = () => {
+    setAddMenu(true)
+    setUpdateMenu({open: false, item: null})
+  }
 
   return (
       <table>
@@ -31,14 +42,14 @@ const InventoryList = () => {
                 <td>{item.quantity}</td>
                 <td>{item.price}</td>
                 <td>
-                  <button>Modifier</button>
+                  <button onClick={() => {handleUpdate(item)}}>Modifier</button>
                   <button onClick={() => handleDelete(item.id)}>Supprimer</button>
                 </td>
               </tr>
             )
           })}
-        <tr><td rowSpan={5}>
-          <button>Ajouter</button>
+        <tr><td>
+          <button onClick={() => handleAdd()}>Ajouter</button>
         </td></tr>
         </tbody>
       </table>
