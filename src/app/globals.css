@@ -1,6 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 * {
     margin: 0;
     padding: 0;
+    box-sizing : border-box;
 }
 
 body {
@@ -11,6 +17,6 @@ body {
     flex-direction: column;
 
     height: 100%;
-    padding: 0 25%;
+    padding: 30px 20px;
     gap: 20px;
 }

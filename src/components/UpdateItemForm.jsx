@@ -1,6 +1,6 @@
 "use client";
 import { useInventory } from "@/hooks/useInventory";
-import { updateProductInBDD } from "@/app/libs/products";
+import { updateProductInBDD } from "@/app/libs/prisma";
 import React from "react";
 
 const UpdateItemForm = () => {

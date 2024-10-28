@@ -2,7 +2,7 @@ import AddItemForm from "@/components/addItemForm";
 import InventoryList from "@/components/InventoryList";
 import UpdateItemForm from "@/components/UpdateItemForm";
 import { InventoryProvider } from "@/hooks/useInventory";
-import { getProducts } from "@/app/libs/products";
+import { getProducts } from "@/app/libs/prisma";
 
 export default async function Home() {
 	const inventory = await getProducts();
@@ -10,7 +10,7 @@ export default async function Home() {
 	return (
 		<>
 			<InventoryProvider initialInventory={inventory}>
-				<h1>InventoRiz</h1>
+				<h1 className="text-5xl font-bold text-center">InventoRiz</h1>
 				<InventoryList />
 				<AddItemForm />
 				<UpdateItemForm />

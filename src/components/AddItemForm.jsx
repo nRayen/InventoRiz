@@ -1,6 +1,6 @@
 "use client";
 import { useInventory } from "@/hooks/useInventory";
-import { addProductToBDD } from "@/app/libs/products";
+import { addProductToBDD } from "@/app/libs/prisma";
 import React from "react";
 
 const AddItemForm = () => {
@@ -39,21 +39,28 @@ const AddItemForm = () => {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<label htmlFor="name">Nom</label>
-			<input type="text" name="name" id="name" required />
+			
+			<div>
+				<label htmlFor="name">Nom</label>
+				<input type="text" name="name" id="name" required />
+			</div>
 
-			<label htmlFor="description">Description</label>
-			<input type="text" name="description" id="description" />
+			<div>
+				<label htmlFor="description">Description</label>
+				<input type="text" name="description" id="description" />
+			</div>
 
-			<label htmlFor="quantity" required>
-				Quantité
-			</label>
-			<input type="number" name="quantity" id="quantity" />
+			<div>
+				<label htmlFor="quantity" required>Quantité</label>
+				<input type="number" name="quantity" id="quantity" />
+			</div>
 
-			<label htmlFor="price">Prix</label>
-			<input type="number" name="price" id="price" />
+			<div>
+				<label htmlFor="price">Prix</label>
+				<input type="number" name="price" id="price" />
+			</div>
 
-			<button type="submit">Ajouter</button>
+			<button type="submit" className="btn btn-primary">Ajouter</button>
 		</form>
 	);
 };

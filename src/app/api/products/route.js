@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/app/libs/products";
+import { prisma } from "@/app/libs/prisma";
 
 
 // API pour supprimer

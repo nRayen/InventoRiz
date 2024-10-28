@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 export const prisma = new PrismaClient();
 
-export async function getProducts(req,res) {
+export async function getProducts() {
     const products = await prisma.product.findMany();
     return products
 }
@@ -23,16 +23,9 @@ export async function addProductToBDD(product) {
     }
 }
 
-// export async function deleteProductFromBDD(id) {
-
-// }
 export const deleteProductFromBDD = async (product) => {
     try {
         const response = await fetch("/api/products", {
-            // headers: {
-            //     Accept: "application/json",
-            //     method: "DELETE"
-            // },
             method: "DELETE",
             body: JSON.stringify(product)
         })
@@ -44,7 +37,6 @@ export const deleteProductFromBDD = async (product) => {
         console.log(error)
     }
 }
-
 
 export async function updateProductInBDD(product) {
     try {
