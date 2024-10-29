@@ -2,6 +2,8 @@
 import { useInventory } from "@/hooks/useInventory";
 import { deleteProductFromBDD } from "@/app/libs/prisma";
 import React, { useState } from "react";
+import DeleteSVG from "./svg/DeleteSVG";
+import EditSVG from "./svg/EditSVG";
 
 const InventoryList = () => {
 	const {
@@ -39,19 +41,21 @@ const InventoryList = () => {
 	}
 	const handleMax = () => {
 		setFilterMax(document.getElementById('maxFilter').value)
+		console.log('max' + filterMax + '   ' + document.getElementById('maxFilter').value)
 	}
 
 	return (
 		<>
 		<div className="filter text-black">
 			<input type="text" name="search" id="search" onChange={() => handleSearch()}/>
-			<input type="number" name="minFilter" id="minFilter" onChange={() => handleMin()}/>
-			<input type="number" name="maxFilter" id="maxFilter" onChange={() => handleMax()}/>
+			<input type="number" min={0} name="minFilter" id="minFilter" onChange={() => handleMin()}/>
+			<input type="number" min={0} name="maxFilter" id="maxFilter" onChange={() => handleMax()}/>
 		</div>
+
 		<table className="table-auto border-collapse w-full">
 			<thead>
-				<tr className="bg-gray-200 text-center ">
-					<th className="font-bold text-2xl ">Nom</th>
+				<tr className="bg-indigo-300 text-center h-16">
+					<th className="font-bold text-2xl">Nom</th>
 					<th className="font-bold text-2xl">Description</th>
 					<th className="font-bold text-2xl">Quantité</th>
 					<th className="font-bold text-2xl">Prix</th>
@@ -69,7 +73,7 @@ const InventoryList = () => {
 					}
 
 					// Vérifier maximum
-					if (filterMax !== 0) {
+					if (filterMax != 0) {
 						if (item.quantity > filterMax) {
 							return
 						}
@@ -81,27 +85,21 @@ const InventoryList = () => {
 					}
 
 					return (
-						<tr key={item.id} className="bg-gray-600 even:bg-slate-800">
-							<td className="border-t">{item.name}</td>
-							<td className="border-t">{item.description}</td>
-							<td className="border-t">{item.quantity}</td>
-							<td className="border-t">{item.price}</td>
-							<td className="border-t">
-								<button
-									onClick={() => {
-										handleUpdate(item);
-									}}
-								>
-									Modifier
-								</button>
-								<button onClick={() => handleDelete(item)}>Supprimer</button>
+						<tr key={item.id} className="bg-slate-200 even:bg-slate-300 h-16 text-black text-lg" >
+							<td className="border-t text-center h-full">{item.name}</td>
+							<td className="border-t text-center">{item.description}</td>
+							<td className="border-t text-center">{item.quantity}</td>
+							<td className="border-t text-center">{item.price + "€"}</td>
+							<td className="border-t text-center h-full">
+								<button className="h-full w-12 bg-emerald-500 hover:bg-emerald-600 m-1" onClick={() => {handleUpdate(item)}}><EditSVG/></button>
+								<button className="h-full w-12 bg-red-500 hover:bg-red-600 m-1" onClick={() => handleDelete(item)}><DeleteSVG/></button>
 							</td>
 						</tr>
 					);
 				})}
 				<tr>
-					<td colSpan={5}>
-						<button onClick={() => handleAdd()} className="w-full text-red-500 py-4 border-white hover:bg-slate-100" >Ajouter</button>
+					<td colSpan={5} className="h-16">
+						<button onClick={() => handleAdd()} className=" h-full w-full text-white font-bold text-lg bg-blue-500 hover:bg-blue-600 mt-4 rounded-2xl" >Ajouter</button>
 					</td>
 				</tr>
 			</tbody>
