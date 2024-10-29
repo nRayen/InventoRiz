@@ -10,6 +10,10 @@ const AddItemForm = () => {
 		return;
 	}
 
+	const handleReset = () => {
+		setAddMenu(false)
+	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const id =
@@ -38,29 +42,30 @@ const AddItemForm = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			
-			<div>
-				<label htmlFor="name">Nom</label>
-				<input type="text" name="name" id="name" required />
+		<form onSubmit={handleSubmit} onReset={handleReset} className="w-1/2 mx-auto">
+
+			<div className="mb-4">
+				<label className="block text-md font-medium mb-2" htmlFor="name">Nom</label>
+				<input className="py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="text" name="name" id="name" required />
 			</div>
 
-			<div>
-				<label htmlFor="description">Description</label>
-				<input type="text" name="description" id="description" />
+			<div className="mb-4">
+				<label className="block text-md font-medium mb-2" htmlFor="description">Description</label>
+				<input className="py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="text" name="description" id="description" />
 			</div>
 
-			<div>
-				<label htmlFor="quantity" required>Quantité</label>
-				<input type="number" name="quantity" id="quantity" />
+			<div className="mb-4">
+				<label className="block text-md font-medium mb-2" htmlFor="quantity" required>Quantité</label>
+				<input className="py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="number" name="quantity" id="quantity" />
 			</div>
 
-			<div>
-				<label htmlFor="price">Prix</label>
-				<input type="number" name="price" id="price" />
+			<div className="mb-4">
+				<label className="block text-md font-medium mb-2" htmlFor="price">Prix</label>
+				<input className="py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="number" name="price" id="price" />
 			</div>
 
-			<button type="submit" className="btn btn-primary">Ajouter</button>
+			<button type="submit" className="w-32 mr-4 p-2 text-white font-bold text-lg bg-sky-500 hover:bg-sky-600  rounded-2xl">Confirmer</button>
+			<button type="reset" className="w-32 p-2 text-white font-bold text-lg bg-sky-500 hover:bg-sky-600  rounded-2xl" >Annuler</button>
 		</form>
 	);
 };

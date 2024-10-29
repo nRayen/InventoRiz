@@ -10,8 +10,6 @@
 }
 
 body {
-    background: #424c63;
-    color: white;
     display: flex;
     justify-content: center;
     flex-direction: column;

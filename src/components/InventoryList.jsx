@@ -10,7 +10,9 @@ const InventoryList = () => {
 		inventory,
 		removeFromInventory,
 		setAddMenu,
+		addMenu,
 		setUpdateMenu,
+		updateMenu
 	} = useInventory();
 
 	const handleDelete = async (product) => {
@@ -44,22 +46,40 @@ const InventoryList = () => {
 		console.log('max' + filterMax + '   ' + document.getElementById('maxFilter').value)
 	}
 
+	if (addMenu || updateMenu.open) {
+		return
+	}
+
 	return (
 		<>
-		<div className="filter text-black">
-			<input type="text" name="search" id="search" onChange={() => handleSearch()}/>
-			<input type="number" min={0} name="minFilter" id="minFilter" onChange={() => handleMin()}/>
-			<input type="number" min={0} name="maxFilter" id="maxFilter" onChange={() => handleMax()}/>
+		<div className="text-lg w-2/3 mx-auto">
+
+			<label className="block text-sm font-medium mb-2" htmlFor="search">Recherche</label>
+			<input className="mb-4 py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"  type="text" name="search" id="search" onChange={() => handleSearch()}/>
+
+			<div className="flex gap-4">
+				<div className="  items-center w-1/2">
+					<label className="block text-sm font-medium mb-2 text-nowrap" htmlFor="minFilter">Stock min.</label>
+					<input className="mb-4 py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="number" min={0} name="minFilter" id="minFilter" onChange={() => handleMin()}/>
+				</div>
+				<div className=" items-center w-1/2">
+					<label className="block text-sm font-medium mb-2 text-nowrap" htmlFor="maxFilter">Stock max.</label>
+					<input className="mb-4 py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="number" min={0} name="maxFilter" id="maxFilter" onChange={() => handleMax()}/>
+				</div>
+
+			</div>
+			<button onClick={() => handleAdd()} className="p-2 px-8 w-32 text-white font-bold text-lg bg-sky-500 hover:bg-sky-600  rounded-2xl" >Ajouter</button>
 		</div>
 
-		<table className="table-auto border-collapse w-full">
+
+		<table className="border-b-slate-400 w-full">
 			<thead>
-				<tr className="bg-indigo-300 text-center h-16">
-					<th className="font-bold text-2xl">Nom</th>
-					<th className="font-bold text-2xl">Description</th>
-					<th className="font-bold text-2xl">Quantité</th>
-					<th className="font-bold text-2xl">Prix</th>
-					<th className="font-bold text-2xl">Action</th>
+				<tr className="text-lg text-left text-slate-800">
+					<th className="p-4">Nom</th>
+					<th className="p-4">Description</th>
+					<th className="p-4">Quantité</th>
+					<th className="p-4">Prix</th>
+					<th className="p-4"></th>
 				</tr>
 			</thead>
 
@@ -85,25 +105,20 @@ const InventoryList = () => {
 					}
 
 					return (
-						<tr key={item.id} className="bg-slate-200 even:bg-slate-300 h-16 text-black text-lg" >
-							<td className="border-t text-center h-full">{item.name}</td>
-							<td className="border-t text-center">{item.description}</td>
-							<td className="border-t text-center">{item.quantity}</td>
-							<td className="border-t text-center">{item.price + "€"}</td>
-							<td className="border-t text-center h-full">
-								<button className="h-full w-12 bg-emerald-500 hover:bg-emerald-600 m-1" onClick={() => {handleUpdate(item)}}><EditSVG/></button>
-								<button className="h-full w-12 bg-red-500 hover:bg-red-600 m-1" onClick={() => handleDelete(item)}><DeleteSVG/></button>
+						<tr key={item.id} className="text-lg border-t text-slate-500" >
+							<td className="p-4 font-medium text-slate-800">{item.name}</td>
+							<td className="p-4">{item.description}</td>
+							<td className="p-4">{item.quantity}</td>
+							<td className="p-4">{item.price + "€"}</td>
+							<td className="font-semibold p-4 text-sky-500 space-x-4 text-right">
+								<button className="" onClick={() => {handleUpdate(item)}}>Modifier</button>
+								<button className="" onClick={() => handleDelete(item)}>Supprimer</button>
 							</td>
 						</tr>
 					);
 				})}
-				<tr>
-					<td colSpan={5} className="h-16">
-						<button onClick={() => handleAdd()} className=" h-full w-full text-white font-bold text-lg bg-blue-500 hover:bg-blue-600 mt-4 rounded-2xl" >Ajouter</button>
-					</td>
-				</tr>
 			</tbody>
-		</table>
+			</table>
 		</>
 	);
 };

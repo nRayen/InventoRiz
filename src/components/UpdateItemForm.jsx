@@ -11,6 +11,10 @@ const UpdateItemForm = () => {
 		return;
 	}
 
+	const handleReset = () => {
+		setUpdateMenu({open: false, item: null})
+	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const id = updateMenu.item.id;
@@ -37,9 +41,10 @@ const UpdateItemForm = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<label htmlFor="name">Nom</label>
+		<form onSubmit={handleSubmit} onReset={handleReset} className="w-1/2 mx-auto">
+			<label className="block text-md font-medium mb-2" htmlFor="name">Nom</label>
 			<input
+				className="mb-4 py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
 				type="text"
 				name="name"
 				id="name"
@@ -47,33 +52,37 @@ const UpdateItemForm = () => {
 				required
 			/>
 
-			<label htmlFor="description">Description</label>
+			<label className="block text-md font-medium mb-2" htmlFor="description">Description</label>
 			<input
+				className="mb-4 py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
 				type="text"
 				name="description"
 				id="description"
 				defaultValue={updateMenu.item.description}
 			/>
 
-			<label htmlFor="quantity" required>
+			<label className="block text-md font-medium mb-2" htmlFor="quantity" required>
 				Quantité
 			</label>
 			<input
+				className="mb-4 py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
 				type="number"
 				name="quantity"
 				id="quantity"
 				defaultValue={updateMenu.item.quantity}
 			/>
 
-			<label htmlFor="price">Prix</label>
+			<label className="block text-md font-medium mb-2" htmlFor="price">Prix</label>
 			<input
+				className="mb-4 py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
 				type="number"
 				name="price"
 				id="price"
 				defaultValue={updateMenu.item.price}
 			/>
 
-			<button type="submit">Confirmer</button>
+			<button type="submit" className="w-32 mr-4 p-2 text-white font-bold text-lg bg-sky-500 hover:bg-sky-600  rounded-2xl">Confirmer</button>
+			<button type="reset" className="w-32 p-2 text-white font-bold text-lg bg-sky-500 hover:bg-sky-600  rounded-2xl">Annuler</button>
 		</form>
 	);
 };

@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="fr">
-      <body>
+      <body className="bg-slate-100">
         <ThemeProvider>
           {children}
         </ThemeProvider>
