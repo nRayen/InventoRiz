@@ -10,7 +10,7 @@ export default async function Home() {
 	return (
 		<>
 			<InventoryProvider initialInventory={inventory}>
-				<h1 className="text-5xl font-bold text-center">InventoRiz</h1>
+				<h1 className="text-5xl font-bold text-center">Invento<span className="text-sky-500">Riz</span></h1>
 				<InventoryList />
 				<AddItemForm />
 				<UpdateItemForm />

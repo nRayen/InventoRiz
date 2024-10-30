@@ -2,8 +2,6 @@
 import { useInventory } from "@/hooks/useInventory";
 import { deleteProductFromBDD } from "@/app/libs/prisma";
 import React, { useState } from "react";
-import DeleteSVG from "./svg/DeleteSVG";
-import EditSVG from "./svg/EditSVG";
 
 const InventoryList = () => {
 	const {
@@ -110,9 +108,9 @@ const InventoryList = () => {
 							<td className="p-4">{item.description}</td>
 							<td className="p-4">{item.quantity}</td>
 							<td className="p-4">{item.price + "€"}</td>
-							<td className="font-semibold p-4 text-sky-500 space-x-4 text-right">
-								<button className="" onClick={() => {handleUpdate(item)}}>Modifier</button>
-								<button className="" onClick={() => handleDelete(item)}>Supprimer</button>
+							<td className="font-semibold p-4 text-sky-500  space-x-4 text-right">
+								<button className="hover:text-sky-600" onClick={() => {handleUpdate(item)}}>Modifier</button>
+								<button className="hover:text-sky-600" onClick={() => handleDelete(item)}>Supprimer</button>
 							</td>
 						</tr>
 					);
