@@ -56,12 +56,12 @@ const AddItemForm = () => {
 
 			<div className="mb-4">
 				<label className="block text-md font-medium mb-2" htmlFor="quantity" required>Quantité</label>
-				<input className="py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="number" name="quantity" id="quantity" />
+				<input min={0} className="py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="number" name="quantity" id="quantity" />
 			</div>
 
 			<div className="mb-4">
 				<label className="block text-md font-medium mb-2" htmlFor="price">Prix</label>
-				<input className="py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="number" name="price" id="price" />
+				<input min={0} step="any" className="py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" type="number" name="price" id="price" />
 			</div>
 
 			<button type="submit" className="w-32 mr-4 p-2 text-white font-bold text-lg bg-sky-500 hover:bg-sky-600  rounded-2xl">Confirmer</button>
