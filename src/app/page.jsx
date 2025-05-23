@@ -1,4 +1,4 @@
-import AddItemForm from "@/components/addItemForm";
+import AddItemForm from "@/components/AddItemForm";
 import InventoryList from "@/components/InventoryList";
 import UpdateItemForm from "@/components/UpdateItemForm";
 import { InventoryProvider } from "@/hooks/useInventory";
