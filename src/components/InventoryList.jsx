@@ -70,7 +70,7 @@ const InventoryList = () => {
 		</div>
 
 
-		<table className="border-b-slate-400 w-full">
+		<table className="border-b-slate-400 w-2/3 mx-auto">
 			<thead>
 				<tr className="text-lg text-left text-slate-800">
 					<th className="p-4">Nom</th>

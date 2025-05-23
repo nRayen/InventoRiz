@@ -76,7 +76,7 @@ const UpdateItemForm = () => {
 			<label className="block text-md font-medium mb-2" htmlFor="price">Prix</label>
 			<input
 				min={0}
-				step={any}
+				step={"any"}
 				className="mb-4 py-3 px-4 block w-full border-gray-200 rounded-lg text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
 				type="number"
 				name="price"
