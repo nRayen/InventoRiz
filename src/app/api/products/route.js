@@ -14,11 +14,13 @@ export async function DELETE(request) {
         })
 
     } catch (error) {
-        console.error(error)
+        return NextResponse.json({
+            error : error.message
+        }, {status : 500})
     }
     return NextResponse.json({
         product
-    })
+    }, {status : 200})
 }
 
 // API pour ajouter nouveau
@@ -30,11 +32,13 @@ export async function POST(request) {
             data : product
         })
     } catch (error) {
-        console.error(error.message)
+        return NextResponse.json({
+            error : error.message
+        }, {status : 500})
     }
     return NextResponse.json({
         product
-    })
+    }, {status : 200})
 }
 
 
@@ -56,9 +60,11 @@ export async function PUT(request) {
         })
 
     } catch (error) {
-        console.error(error)
+        return NextResponse.json({
+            error : error.message
+        }, {status : 500})
     }
     return NextResponse.json({
         product
-    })
+    }, {status : 200})
 }
